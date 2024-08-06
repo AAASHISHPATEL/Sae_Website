@@ -1,0 +1,31 @@
+.relative {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem; /* Rounded corners */
+}
+
+.relative img {
+    transition: transform 0.4s ease, filter 0.4s ease; /* Add filter transition */
+}
+
+/* HoverCard styling */
+.h-card {
+    position: relative;
+    border-radius: 1rem; /* Ensure border radius is applied */
+}
+
+.h-card img {
+    filter: grayscale(100%); /* Apply grayscale effect initially */
+    transition: transform 0.4s ease, filter 0.4s ease; /* Transition for both transform and filter */
+}
+
+/* Remove the dimming effect */
+.h-card::after {
+    content: none; /* Remove overlay completely */
+}
+
+.h-card:hover img {
+    transform: scale(1.05); /* Slight zoom effect */
+    filter: grayscale(0%);
+}
+

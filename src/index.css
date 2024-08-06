@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  background-color: rgb(21, 23, 26);
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  display: flex;
+  flex-direction: column; /* Allow content to stack vertically */
+  min-height: 100vh; /* Ensure body covers full viewport height */
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* Ensure images are responsive and don't overflow */
+}
