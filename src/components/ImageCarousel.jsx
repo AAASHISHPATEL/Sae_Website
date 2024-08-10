@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const images = [
   {
@@ -37,7 +37,6 @@ const images = [
     id: 9,
     url: 'https://live.staticflickr.com/65535/52780703426_e3eaa82d0e_w.jpg',
   },
-
 ];
 
 const ImageCarousel = () => {
@@ -46,21 +45,53 @@ const ImageCarousel = () => {
       <h1 className="text-5xl text-custom-red font-sans font-bold text-center mb-12">Gallery</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {images.map((item, index) => (
-          <div
-            key={item.id}
-            className={`relative flex flex-col justify-end overflow-hidden bg-cover bg-center shadow-lg transform transition-transform duration-300 cursor-pointer hover:scale-105 ${
-              (index + 1) % 3 === 0 ? 'row-span-2 lg:row-span-1' : ''
-            } ${(index + 1) % 4 === 0 ? 'lg:col-span-2' : ''} ${
-              (index + 1) % 5 === 0 ? 'lg:h-auto' : 'h-60 lg:h-80'
-            }`}
-            style={{ backgroundImage: `url(${item.url})` }}
-          >
-            <div className="absolute inset-0 bg-black opacity-30 transition-opacity duration-300 hover:opacity-0"></div>
-          </div>
+          <ImageItem key={item.id} item={item} index={index} />
         ))}
       </div>
     </section>
   );
 };
 
+const ImageItem = ({ item, index }) => {
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeIn');
+          observer.unobserve(entry.target); // Stop observing once the animation is triggered
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={imageRef}
+      className={`relative flex flex-col justify-end overflow-hidden bg-cover bg-center shadow-lg transform transition-transform duration-300 cursor-pointer hover:scale-105 opacity-0 ${
+        (index + 1) % 3 === 0 ? 'row-span-2 lg:row-span-1' : ''
+      } ${(index + 1) % 4 === 0 ? 'lg:col-span-2' : ''} ${
+        (index + 1) % 5 === 0 ? 'lg:h-auto' : 'h-60 lg:h-80'
+      }`}
+      style={{ backgroundImage: `url(${item.url})` }}
+    >
+      <div className="absolute inset-0 bg-black opacity-30 transition-opacity duration-300 hover:opacity-0"></div>
+    </div>
+  );
+};
+
 export default ImageCarousel;
+
+

@@ -1,21 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderImg from './components/HeaderImg';
 import Speakers from './components/Speakers';
 import Organisers from './components/Organisers';
 import ImageCarousel from './components/ImageCarousel';
-import './App.css'
+import './App.css';
 
 const App = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+      const windowHeight = window.innerHeight;
+
+      elements.forEach(element => {
+        const positionFromTop = element.getBoundingClientRect().top;
+
+        if (positionFromTop - windowHeight <= 0) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className=" overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <HeaderImg />
 
       {/* About TedX Section */}
-      <div className="info flex flex-col md:flex-row justify-around m-8 md:m-16">
+      <div className="info flex flex-col md:flex-row justify-around m-8 md:m-16 slide-in-left">
         <div className="flex flex-col w-full md:w-1/2 p-4 order-2 md:order-1">
           <h1 className="text-4xl md:text-5xl font-bold text-custom-red text-center mb-6 font-sans">About TedX</h1>
           <p className="text-lg md:text-xl text-gray-600 text-center mb-8">
-            TEDx is an independently organized equivalent to its international counterpart, TED. Resonating with TED’s mission of researching and discovering “ideas worth spreading”, TEDx aims to provide a credible platform to an emerging pool of talent at the grassroots, subsequently sparking constructive discussions locally. TEDx events are organized by curious individuals who seek to discover ideas and spark conversations in their own community.
+          TEDx is the independently organized counterpart to the global TED conference. Sharing TED's commitment to spreading "ideas worth spreading," TEDx provides a credible platform for emerging talent at the local level, encouraging thoughtful discussions within communities. These events are driven by passionate individuals who seek to discover new ideas and inspire conversations in their own areas.
           </p>
         </div>
         <div className="flex justify-center w-full md:w-auto order-1 md:order-2">
@@ -28,7 +49,7 @@ const App = () => {
       </div>
 
       {/* SAE in TedX Section */}
-      <div className="info flex flex-col md:flex-row justify-around m-8 md:m-16">
+      <div className="info flex flex-col md:flex-row justify-around m-8 md:m-16 slide-in-right">
         <div className="flex justify-center w-full md:w-auto order-1 md:order-1">
           <img
             src="https://live.staticflickr.com/65535/52768700101_42d558203a_c.jpg"
@@ -39,7 +60,7 @@ const App = () => {
         <div className="flex flex-col w-full md:w-1/2 p-4 order-2 md:order-2">
           <h1 className="text-4xl md:text-5xl font-bold text-custom-red text-center mb-6">SAE in TedX</h1>
           <p className="text-lg md:text-xl text-gray-600 text-center mb-8">
-            SAE also conducts TEDxNITDurgapur, a part of TED along with Literary Circle, a worldwide, grassroots initiative, that aims to provide a platform for a symphony of voices from a plethora of spheres to propagate ingenious ideas and thoughts.
+          SAE, in collaboration with the Literary Circle, organizes TEDxNITDurgapur, as part of the global TED initiative. This worldwide grassroots effort seeks to create a platform that brings together diverse voices from various fields to share and promote innovative ideas and perspectives.
           </p>
         </div>
       </div>

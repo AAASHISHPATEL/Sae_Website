@@ -13,3 +13,26 @@ img {
   max-width: 100%;
   height: auto; /* Ensure images are responsive and don't overflow */
 }
+
+
+/* Initial state for sliding from left */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+/* Initial state for sliding from right */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+/* Active state for both */
+.slide-in-left.active,
+.slide-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+

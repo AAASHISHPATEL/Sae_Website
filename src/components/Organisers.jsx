@@ -15,7 +15,7 @@ const Organisers = () => {
   return (
     <div className="organisers-container mx-auto">
       {organisers.map((organiser, index) => (
-        <div key={index} className="image-card" data-name={organiser.name}>
+        <div key={index} className="image-card font-bold text-xl" data-name={organiser.name}>
           <img src={organiser.imgSrc} alt={organiser.name} />
         </div>
       ))}
