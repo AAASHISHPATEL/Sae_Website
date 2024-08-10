@@ -1,5 +1,5 @@
 import React from 'react';
-import './Speakers.css'; // Import custom CSS for additional styles
+import './Speakers.css'; 
 
 const speakers = [
   {
@@ -51,7 +51,7 @@ const speakers = [
 
 const Speakers = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen p-6 ">
+    <div className="flex justify-center items-center min-h-screen p-6 mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {speakers.map((speaker, index) => (
           <div key={index} className="card relative w-80 h-80 bg-white rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:rotate-3 hover:shadow-xl">

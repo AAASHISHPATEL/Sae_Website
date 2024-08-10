@@ -7,7 +7,7 @@ import './App.css'
 
 const App = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className=" overflow-x-hidden">
       <HeaderImg />
 
       {/* About TedX Section */}
@@ -44,18 +44,15 @@ const App = () => {
         </div>
       </div>
 
-      
       <div className="max-w-screen mx-auto p-4">
         <ImageCarousel />
       </div>
 
-    
       <div className="max-w-screen mx-auto p-4">
-        <h1 className="text-5xl font-bold text-custom-red text-center ">Speakers</h1>
+        <h1 className="text-5xl font-bold text-custom-red text-center">Speakers</h1>
         <Speakers />
       </div>
 
-     
       <div className="max-w-screen mx-auto p-4">
         <h1 className="text-5xl font-bold text-custom-red text-center mb-6">Organisers</h1>
         <Organisers />

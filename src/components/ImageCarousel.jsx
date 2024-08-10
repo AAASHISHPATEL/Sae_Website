@@ -38,7 +38,6 @@ const images = [
     url: 'https://live.staticflickr.com/65535/52780703426_e3eaa82d0e_w.jpg',
   },
 
-  // Add more items as needed
 ];
 
 const ImageCarousel = () => {

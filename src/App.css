@@ -1,0 +1,15 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  background-color: rgb(21, 23, 26);
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  min-height: 100vh; /* Ensure body covers full viewport height */
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* Ensure images are responsive and don't overflow */
+}

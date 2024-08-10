@@ -1,31 +1,101 @@
-.relative {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1rem; /* Rounded corners */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-.relative img {
-    transition: transform 0.4s ease, filter 0.4s ease; /* Add filter transition */
+.organisers-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
 }
 
-/* HoverCard styling */
-.h-card {
-    position: relative;
-    border-radius: 1rem; /* Ensure border radius is applied */
+.image-card {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  position: relative;
+  transition: transform 4s ease-in;
+  overflow: hidden;
+  border: 4px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.h-card img {
-    filter: grayscale(100%); /* Apply grayscale effect initially */
-    transition: transform 0.4s ease, filter 0.4s ease; /* Transition for both transform and filter */
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 1s ease-in;
 }
 
-/* Remove the dimming effect */
-.h-card::after {
-    content: none; /* Remove overlay completely */
+.image-card img:hover {
+  transform: scale(1.2);
 }
 
-.h-card:hover img {
-    transform: scale(1.05); /* Slight zoom effect */
-    filter: grayscale(0%);
+.image-card:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-name);
+  transform: translateY(-100%);
+  font-size: 25px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(188, 143, 143, 0.137);
+  z-index: 1;
+  font-family: sans-serif;
+  transition: transform .4s ease-in;
+  border: 4px solid white;
+  box-sizing: border-box;
 }
 
+.image-card:after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(data-name);
+  transform: translateY(100%);
+  font-size: 25px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(188, 143, 143, 0.137);
+  z-index: 1;
+  font-family: sans-serif;
+  transition: transform .4s ease-in;
+  border: 4px solid white;
+  box-sizing: border-box;
+}
+
+.image-card:hover::before {
+  transform: translateY(0%);
+}
+
+.image-card:hover::after {
+  transform: translateY(0%);
+}
+
+
+@media only screen and (max-width: 1050px) {
+  .organisers-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .organisers-container {
+    grid-template-columns: 1fr;
+  }
+}

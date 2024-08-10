@@ -21,11 +21,11 @@ const HeaderImg = () => {
   useEffect(() => {
     const schedule = () => {
       progress();
-      setTimeout(schedule, 4000); // 4 seconds delay between transitions
+      setTimeout(schedule, 4000); 
     };
-    const timeoutId = setTimeout(schedule, 500); // Initial delay before the first transition
+    const timeoutId = setTimeout(schedule, 500); // Initial delay before the first 
 
-    return () => clearTimeout(timeoutId); // Cleanup on unmount
+    return () => clearTimeout(timeoutId); 
   }, []);
 
   const progress = () => {
@@ -33,19 +33,19 @@ const HeaderImg = () => {
   };
 
   return (
-    <div className="relative1 w-full h-screen overflow-hidden bg-black">
+    <div className="relative1">
       {images.map((src, index) => (
         <img
           key={index}
           src={src}
           alt={`Stock ${index}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1000ms] ${index === current ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 object-cover transition-opacity duration-1000 ${index === current ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}
       {clipPaths.map((clipPath, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-transform duration-[1200ms] delay-[500ms] ${index === current ? clipPath : ''}`}
+          className={`clipPath ${index === current ? clipPath : ''} transition-transform duration-1200 delay-500`}
         />
       ))}
     </div>
