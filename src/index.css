@@ -7,7 +7,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+.clip-closed {
+  clip-path: circle(50px at 90% -20%);
+}
 
+.clip-open {
+  clip-path: circle(1000px at 90% -10%);
+}
+
+.fade {
+  opacity: 1;
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.7s; }
+.delay-5 { transition-delay: 0.8s; }
+.delay-6 { transition-delay: 0.9s; }
+.delay-7 { transition-delay: 1s; }
 
 @layer utilities {
   @keyframes fadeIn {

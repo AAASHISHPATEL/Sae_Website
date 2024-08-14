@@ -3,6 +3,7 @@ import HeaderImg from './components/HeaderImg';
 import Speakers from './components/Speakers';
 import Organisers from './components/Organisers';
 import ImageCarousel from './components/ImageCarousel';
+import Navbar from './components/Navbar';  // Import the Navbar component
 import './App.css';
 
 const App = () => {
@@ -29,6 +30,8 @@ const App = () => {
 
   return (
     <div className="overflow-x-hidden">
+      <Navbar />  {/* Add the Navbar component */}
+
       <HeaderImg />
 
       {/* About TedX Section */}
