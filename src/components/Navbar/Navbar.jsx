@@ -24,7 +24,6 @@ function Navbar() {
     };
   }, []);
 
-  // Ensure the menu stays closed on initial load
   useEffect(() => {
     setIsOpen(false);
   }, []);

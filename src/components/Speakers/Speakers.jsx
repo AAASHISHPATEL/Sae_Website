@@ -51,15 +51,15 @@ const speakers = [
 
 const Speakers = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen p-6 mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div className="speakers-container">
+      <div className="organisers-container">
         {speakers.map((speaker, index) => (
-          <div key={index} className="card relative w-80 h-80 bg-white rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:rotate-3 hover:shadow-xl">
-            <div className="imgBx absolute inset-2 bg-gray-900">
-              <img src={speaker.imgSrc} alt={speaker.name} className="w-full h-full object-cover" />
+          <div key={index} className="card">
+            <div className="imgBx">
+              <img src={speaker.imgSrc} alt={speaker.name} />
             </div>
-            <div className="absolute bottom-2 left-2 right-2 text-center details">
-              <h2 className="text-white text-2xl font-bold uppercase">{speaker.name}<br /><span className="text-custom-red text-xl font-semibold">{speaker.role}</span></h2>
+            <div className="details">
+              <h2>{speaker.name}<br /><span>{speaker.role}</span></h2>
             </div>
           </div>
         ))}
